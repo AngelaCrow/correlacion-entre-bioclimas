@@ -22,13 +22,12 @@ while (i <= length(variables)) {
 
 	i = i + 1;
 }
-
 # nombrar las columnas con el nombre de los bioclimas
 names(df) = variables;
 
 corr.matrix = cor(df,use='complete.obs');
 
-write.csv(corr.mtrx,file="corr_matrix.csv",quote=FALSE)
+write.csv(corr.mtrx,file="corr.matrix.csv",quote=FALSE)
 
 # Plot de las correlaciones
 
