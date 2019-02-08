@@ -7,10 +7,8 @@ library(magrittr)
 # ajuste su directorio de trabajo
 setwd('')
 
-mask<-raster("~/Documents/Wolke/Nuevo/mask.tif")
-
 # Background, como quieres hacerlo entre las variables hay que generar puntos al azar
-env<-stack(list.files("Variables_baja/", pattern = ".tif$*", full.names = T))
+env<-stack(list.files("Variables/", pattern = ".tif$*", full.names = T))
 bg.df <- dismo::randomPoints(env[[1]], n = 10000) %>% as.data.frame()
 
 covarData <- raster::extract(env, bg.df)
@@ -22,7 +20,6 @@ multicol(covarData[ , 3:ncol(covarData)])  # especificar solo las columnas con v
 # min 18:42 https://www.youtube.com/watch?v=uo0kgxOd_fM&t=1574s&list=PLu_3tLNPCPDZ7KhT5WzapXG5VuqQz7RT3&index=4
 
 ####SELECCION DE VARIABLES####
-
 correlacion <- corSelect(
   data = covarData, 
   sp.cols = 27,
